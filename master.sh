@@ -1,15 +1,7 @@
 #!/bin/bash
 ip="$(ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')"
-echo "Type the fully qualified domain name...[ENTER]:"
-read fqdn
-echo "wanna install puppet master?"
-read isit
-
-if [ "$isit" == y ]; then
-
+fqdn=puppet.master
 echo "setting the hostname as $fqdn in /etc/hosts file with ipaddress $ip ... "
-echo "$ip       $fqdn" >> /etc/hosts
-sleep 2
 echo ""
 printf "writing $fqdn as hostname in kernel..."
 sleep 2
@@ -64,6 +56,3 @@ echo ""
 sleep 2
 yum install -y git && echo "git has been installed"
 echo "later, aight!"
-else
-echo "If you don't want to install puppet master, why even bother?"
-fi
