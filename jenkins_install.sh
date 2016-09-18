@@ -1,11 +1,12 @@
 #!/bin/bash
+fqdn=puppet.master
+sed -i 's/\(127.0.0.1 \)/\1 $fqdn/' /etc/hosts
 service iptables stop && chkconfig iptables off && echo "firewall fixed"
 echo ""
 sleep 2
 yum install -y wget && echo "wget installed...now get the repo"
 sleep 2
 sudo yum install -y java && echo " java installed"
-echo ""
 echo ""
 sleep 2
 sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo && echo "got the repo"
