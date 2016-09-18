@@ -1,2 +1,2 @@
 #!/bin/bash
-mkdir /tmp/sagar.txt
+touch /tmp/my_file.txt && echo "file has been created"
